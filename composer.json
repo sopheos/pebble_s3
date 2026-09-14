@@ -1,0 +1,16 @@
+{
+    "name": "sopheos/pebble_s3",
+    "description": "Token, JWT, Hash and more by sopheos",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.5.0",
+        "aws/aws-sdk-php": "^3.395"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pebble\\S3\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
