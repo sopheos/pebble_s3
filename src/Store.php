@@ -5,6 +5,7 @@ namespace Pebble\S3;
 use Aws\Exception\AwsException;
 use Aws\S3\S3Client;
 use InvalidArgumentException;
+use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 
 class Store
@@ -114,7 +115,7 @@ class Store
 
     public function set(string $key, mixed $data, string $contentType = self::DEFAULT_TYPE): ?string
     {
-        if (! (is_resource($data) || is_string($data))) {
+        if (! (is_resource($data) || is_string($data) || $data instanceof StreamInterface)) {
             throw new InvalidArgumentException('unsupported_file');
         }
 
