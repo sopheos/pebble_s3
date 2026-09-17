@@ -115,12 +115,17 @@ class Store
 
     /**
      * @param string $key
-     * @param string|resource|StreamInterface $data
+     * @param string|resource|StreamInterface|\Imagick $data
      * @param string $contentType
      * @return string
      */
     public function set(string $key, mixed $data, string $contentType = self::DEFAULT_TYPE): string
     {
+        if ($data instanceof \Imagick) {
+            $contentType = $data->getImageMimeType() ?: $contentType;
+            $data = $data->getImageBlob();
+        }
+
         if (! (is_resource($data) || is_string($data) || $data instanceof StreamInterface)) {
             throw new InvalidArgumentException('unsupported_file');
         }

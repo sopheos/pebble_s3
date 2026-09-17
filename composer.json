@@ -7,6 +7,9 @@
         "aws/aws-sdk-php": "^3.395",
         "psr/http-message": "^2.0"
     },
+    "suggest": {
+        "ext-imagick": "Permet de stocker directement des images Imagick via Store::set()"
+    },
     "autoload": {
         "psr-4": {
             "Pebble\\S3\\": "src/"
