@@ -124,9 +124,7 @@ class Store
         if ($data instanceof \Imagick) {
             $contentType = $data->getImageMimeType() ?: $contentType;
             $data = $data->getImageBlob();
-        }
-
-        if (! (is_resource($data) || is_string($data) || $data instanceof StreamInterface)) {
+        } elseif (! (is_resource($data) || is_string($data) || $data instanceof StreamInterface)) {
             throw new InvalidArgumentException('unsupported_file');
         }
 
